@@ -77,9 +77,10 @@ public class MqAutoConfiguration {
      *
      * @return
      */
-    @ConditionalOnMissingBean(DefaultMQProducer.class)
+    @ConditionalOnMissingBean(MqProducer.class)
     @Bean
     public MqProducer initDefaultProducer() {
+        log.info("rocketMq producer bean create");
         DefaultMQProducer defaultMQProducer = new DefaultMQProducer();
         defaultMQProducer.setProducerGroup(mqProperties.getProducerGroup());
         defaultMQProducer.setNamesrvAddr(mqProperties.getNameServerAddr());
